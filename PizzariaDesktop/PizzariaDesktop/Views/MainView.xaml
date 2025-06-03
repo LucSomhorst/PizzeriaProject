@@ -1,0 +1,48 @@
+﻿<Window x:Class="PizzariaDesktop.Views.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PizzariaDesktop.Views"
+        xmlns:viewmodels="clr-namespace:PizzariaDesktop.ViewModels"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="MainView" Height="450" Width="800">
+    <d:Window.DataContext>
+        <viewmodels:MainViewModel/>
+    </d:Window.DataContext>
+    <Grid>
+        <!-- #region row 0: menu, row 1: application, rij 2: (error)message to user  -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <!--#endregion-->
+        <!-- #region row 0: menu  -->
+        <Menu Grid.Row="0" Style="{StaticResource MaterialDesignMenu}">
+            <Menu.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel Orientation="Vertical"/>
+                </ItemsPanelTemplate>
+            </Menu.ItemsPanel>
+
+            <MenuItem Header="Contact" Command="{Binding ExecuteShowContactInfo}"
+              Style="{StaticResource MaterialDesignMenuItem}"/>
+        </Menu>
+        <!--#endregion-->
+        <!-- #region row 1: application View Active application function  -->
+        <ContentControl Grid.Row="1" Content="{Binding ActiveViewModel}"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
+        <!--#endregion-->
+        <!-- #region row 2: Possible Messages to User  -->
+        <TextBlock Grid.Row="2" Text="{Binding UserMessage.Text}" 
+           HorizontalAlignment="Stretch"
+           TextAlignment="Center"
+           Padding="0,10,0,10"
+           Background="Black" Foreground="Red"
+           Visibility="{Binding UserMessage.Text, Converter={StaticResource StringIsEmptyVisibilityConverter}}"/>
+        <!--#endregion-->
+    </Grid>
+</Window>
