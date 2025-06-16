@@ -4,17 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Ramsey\Uuid\Codec\OrderedTimeCodec;
 use function PHPUnit\Framework\returnArgument;
 
-class Pizza extends Model
+class Order extends Model
 {
-    protected $fillable = [
-        'name',
-        'size'
-    ];
-
-    public function Orderline () : HasMany {
+    public function OrderLine() : HasMany
+    {
         return $this->hasMany(OrderLine::class);
     }
 }

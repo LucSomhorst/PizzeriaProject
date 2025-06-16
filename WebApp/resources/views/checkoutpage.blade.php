@@ -1,7 +1,4 @@
-<head>
-  @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
-</head>
+@include('includes/navbar')
 <section class="bg-white py-8 antialiased dark:bg-gray-900 md:py-16">
   <form action="#" class="mx-auto max-w-screen-xl px-4 2xl:px-0">
     <ol class="items-center flex w-full max-w-2xl text-center text-sm font-medium text-gray-500 dark:text-gray-400 sm:text-base">

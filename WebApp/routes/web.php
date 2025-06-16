@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
 Route::get('/cart', function () {
     return view('cartpage');
 });
@@ -15,7 +14,9 @@ Route::get('/menu', function () {
 Route::get('/order', function () {
     return view('orderpage');
 });
-
+Route::get('/home', function () {
+    return view('homepage');
+});
 Route::get('/checkout', function () {
     return view('checkoutpage');
 });
