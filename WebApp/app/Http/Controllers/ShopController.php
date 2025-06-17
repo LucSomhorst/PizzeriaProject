@@ -13,4 +13,9 @@ class ShopController extends Controller
         $pizzas = Pizza::all();
         return view('/menupage', ['pizzas' => $pizzas]);
     }
+
+    public function AddItem(string $id)
+    {
+        
+    }
 }

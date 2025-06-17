@@ -19,7 +19,7 @@ Route::get('/checkout', function () {
 });
 
 route::get('/menu', [ShopController::class, 'index']);
-route::post('/menu/{id}', [ShopController::class,'addItem'])
+route::post('/menu/{id}', [ShopController::class,'addItem']);
 Route::resources(
     ['order' => OrderController::class]
 );
