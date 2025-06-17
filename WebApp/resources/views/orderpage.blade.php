@@ -6,24 +6,20 @@
       <div class="space-y-4 sm:space-y-2 rounded-lg border border-gray-100 bg-gray-50 p-6 dark:border-gray-700 dark:bg-gray-800 mb-6 md:mb-8">
           <dl class="sm:flex items-center justify-between gap-4">
               <dt class="font-normal mb-1 sm:mb-0 text-gray-500 dark:text-gray-400">Date</dt>
-              <dd class="font-medium text-gray-900 dark:text-white sm:text-end">14 May 2024</dd>
+              <dd class="font-medium text-gray-900 dark:text-white sm:text-end">{{$order->date}}</dd>
           </dl>
           <dl class="sm:flex items-center justify-between gap-4">
-              <dt class="font-normal mb-1 sm:mb-0 text-gray-500 dark:text-gray-400">Payment Method</dt>
-              <dd class="font-medium text-gray-900 dark:text-white sm:text-end">JPMorgan monthly installments</dd>
+              <dt class="font-normal mb-1 sm:mb-0 text-gray-500 dark:text-gray-400">Status</dt>
+              <dd class="font-medium text-gray-900 dark:text-white sm:text-end">{{$order->status}}</dd>
           </dl>
+            @foreach ($order->orderlines as $orderLine)
           <dl class="sm:flex items-center justify-between gap-4">
-              <dt class="font-normal mb-1 sm:mb-0 text-gray-500 dark:text-gray-400">Name</dt>
-              <dd class="font-medium text-gray-900 dark:text-white sm:text-end">Flowbite Studios LLC</dd>
+              <dt class="font-normal mb-1 sm:mb-0 text-gray-500 dark:text-gray-400">{{$orderLine->pizza->name}}</dt>
+                <dt class="font-normal mb-1 sm:mb-0 text-gray-500 dark:text-gray-400"></dt>
+                <dd class="font-medium text-gray-900 dark:text-white sm:text-end">{{$orderLine->size}}</dd>
+                <dd class="font-medium text-gray-900 dark:text-white sm:text-end">{{$orderLine->amount}}</dd>
           </dl>
-          <dl class="sm:flex items-center justify-between gap-4">
-              <dt class="font-normal mb-1 sm:mb-0 text-gray-500 dark:text-gray-400">Address</dt>
-              <dd class="font-medium text-gray-900 dark:text-white sm:text-end">34 Scott Street, San Francisco, California, USA</dd>
-          </dl>
-          <dl class="sm:flex items-center justify-between gap-4">
-              <dt class="font-normal mb-1 sm:mb-0 text-gray-500 dark:text-gray-400">Phone</dt>
-              <dd class="font-medium text-gray-900 dark:text-white sm:text-end">+(123) 456 7890</dd>
-          </dl>
+            @endforeach
       </div>
       <div class="flex items-center space-x-4">
           <a href="#" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">Track your order</a>
