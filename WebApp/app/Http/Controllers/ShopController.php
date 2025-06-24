@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\OrderLine;
 use App\Models\Pizza;
+use App\Models\Order;
 use Illuminate\Http\Request;
+use PhpParser\Node\ArrayItem;
+use function PHPUnit\Framework\isNull;
 use function PHPUnit\Framework\returnArgument;
 
 class ShopController extends Controller
@@ -14,8 +18,10 @@ class ShopController extends Controller
         return view('/menupage', ['pizzas' => $pizzas]);
     }
 
-    public function AddItem(string $id)
+    public function RemoveItem()
     {
-        
+        $_SESSION['cart'];
+
+        return redirect()->route('home');
     }
 }
