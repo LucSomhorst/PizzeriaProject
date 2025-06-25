@@ -21,5 +21,5 @@ route::post('/menu/add', [ShopController::class,'addItem']);
 route::post('/cart/store', [CartController::class, 'store']);
 route::get('/cart', [CartController::class, 'index']);
 Route::resources(
-    ['order' => OrderController::class]
+    ['orders' => OrderController::class]
 );

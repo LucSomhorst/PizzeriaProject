@@ -15,7 +15,9 @@ class OrderLine extends Model
 
     protected $fillable = [
         'size',
-        'amount'
+        'amount',
+        'pizza_id',
+        'order_id'
     ];
     public function Pizza(): BelongsTo
     {

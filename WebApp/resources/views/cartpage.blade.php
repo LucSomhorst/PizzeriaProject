@@ -3,7 +3,8 @@
 $cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
 ?>
 <section class="bg-white py-8 antialiased dark:bg-gray-900 md:py-16">
-  <form action="order" class="mx-auto max-w-screen-xl px-4 2xl:px-0">
+  <form action="orders" method="POST" class="mx-auto max-w-screen-xl px-4 2xl:px-0">
+    @csrf
     <div class="mx-auto max-w-3xl">
       <h2 class="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">Order summary</h2>
 

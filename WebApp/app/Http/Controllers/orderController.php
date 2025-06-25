@@ -30,40 +30,27 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        $order = Order::create([
-        'date' => now(),
-        'status' => 'pending',
-        ]);
-        $orderlines = [];
         $cart = session('cart');
-        foreach($cart as $cartitem)
-        {   
-            $orderline = OrderLine::create([
+
+        if (!$cart || count($cart) === 0) {
+            return redirect()->back()->with('error', 'Your cart is empty.');
+        }
+
+        $order = Order::create([
+            'date' => now(),
+            'status' => 'pending',
+        ]);
+        foreach ($cart as $cartitem) {
+            $orderline = new OrderLine([
                 'amount' => $cartitem['amount'],
                 'size' => $cartitem['size'],
                 'pizza_id' => $cartitem['pizza']->id,
             ]);
-            $order->OrderLines()->save($orderline);
+            $order->orderLines()->save($orderline);
         }
 
-        // Step 2: Create pizzas (or get existing ones)
-        $pizzas = Pizza::findMany($request->pizzas);
-
-        // Step 3: Create and attach order lines for this order
-        foreach ($pizzas as $pizza) {
-        $orderLine = new OrderLine([
-        'size' => ['small', 'medium', 'large'][array_rand(['small', 'medium', 'large'])],
-        'amount' => random_int(1,5),
-        'pizza_id' => $pizza->id,
-        ]);
-
-        // Attach order line to the order (sets order_id FK)
-        $order->orderLines()->save($orderLine);
-
-        }
-        redirect('/menu');
+        return view('orderpage', ['order' => $order]);
     }
-
     /**
      * Display the specified resource.
      */
