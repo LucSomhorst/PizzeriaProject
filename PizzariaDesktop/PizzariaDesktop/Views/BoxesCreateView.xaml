@@ -1,0 +1,99 @@
+﻿<UserControl x:Class="Eindopdracht.Views.BoxesCreateView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Eindopdracht.Views"
+             xmlns:viewmodels="clr-namespace:Eindopdracht.ViewModels" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <d:UserControl.DataContext>
+        <viewmodels:BoxCreateViewModel/>
+    </d:UserControl.DataContext>
+
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Vertical">
+            <TextBox Text="{Binding Box.Name, UpdateSourceTrigger=PropertyChanged}"
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                     materialDesign:HintAssist.Hint="Naam"
+                     Margin="0,0,0,10"/>
+            <ComboBox ItemsSource="{Binding Rooms}" 
+                      SelectedValue="{Binding Box.CurrentRoomId}" 
+                      SelectedValuePath="Id"
+                      DisplayMemberPath="Name" 
+                      Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                      materialDesign:HintAssist.Hint="Huidige kamer"
+                      Margin="0,0,0,10"/>
+            <ComboBox ItemsSource="{Binding Rooms}" 
+                      SelectedValue="{Binding Box.DestinationRoomId}" 
+                      SelectedValuePath="Id"
+                      DisplayMemberPath="Name" 
+                      Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                      materialDesign:HintAssist.Hint="Kamer waar het heen moet"
+                      Margin="0,0,0,10"/>
+        </StackPanel>
+
+
+        <Grid Grid.Row="1" Margin="0,0,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <DataGrid ItemsSource="{Binding ItemsVanBox}"
+                      AutoGenerateColumns="False"
+                      HeadersVisibility="Column"
+                      IsReadOnly="True"
+                      CanUserAddRows="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Items in de Doos" Binding="{Binding Name}" Width="*"/>
+                    <DataGridTemplateColumn Header="">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Command="{Binding DataContext.VerwijderUitBoxCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                        CommandParameter="{Binding}"
+                                        Style="{StaticResource MaterialDesignToolButton}">
+                                    <materialDesign:PackIcon Kind="Close" Foreground="Purple"/>
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <DataGrid Grid.Column="1"
+                      ItemsSource="{Binding ItemsNietVanBox}"
+                      AutoGenerateColumns="False"
+                      HeadersVisibility="Column"
+                      IsReadOnly="True"
+                      CanUserAddRows="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Items niet in de doos" Binding="{Binding Name}" Width="*"/>
+                    <DataGridTemplateColumn Header="">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Command="{Binding DataContext.VoegToeAanBoxCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                        CommandParameter="{Binding}"
+                                        Style="{StaticResource MaterialDesignToolButton}">
+                                    <materialDesign:PackIcon Kind="Plus" Foreground="Purple"/>
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,0">
+            <Button Content="Store" Command="{Binding StoreCommand}" Background="LimeGreen" Foreground="White" Margin="8,0"/>
+            <Button Content="Cancel" Command="{Binding CancelCommand}" Background="Blue" Foreground="White" Margin="8,0"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
