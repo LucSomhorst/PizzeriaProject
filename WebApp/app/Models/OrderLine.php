@@ -17,7 +17,7 @@ class OrderLine extends Model
         'size',
         'amount'
     ];
-    public function pizza(): BelongsTo
+    public function Pizza(): BelongsTo
     {
         return $this->belongsTo(Pizza::class);
     }
@@ -29,7 +29,7 @@ class OrderLine extends Model
 
     public function CalculatePrice()
     {
-        $price = $this->pizza()->price();
+        $price = $this->Pizza()->price();
         switch ($this->size)
         {
             case 'small': $price *= 1; break;

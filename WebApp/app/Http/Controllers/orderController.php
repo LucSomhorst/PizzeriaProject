@@ -34,6 +34,17 @@ class OrderController extends Controller
         'date' => now(),
         'status' => 'pending',
         ]);
+        $orderlines = [];
+        $cart = session('cart');
+        foreach($cart as $cartitem)
+        {   
+            $orderline = OrderLine::create([
+                'amount' => $cartitem['amount'],
+                'size' => $cartitem['size'],
+                'pizza_id' => $cartitem['pizza']->id,
+            ]);
+            $order->OrderLines()->save($orderline);
+        }
 
         // Step 2: Create pizzas (or get existing ones)
         $pizzas = Pizza::findMany($request->pizzas);
