@@ -22,6 +22,8 @@ namespace PizzariaDesktop.Models
             get { return _name; }
             set { _name = value; OnPropertyChanged(); }
         }
+
+        public ICollection<Ingridient> Ingridients { get; set; }
         #endregion
     }
 }
