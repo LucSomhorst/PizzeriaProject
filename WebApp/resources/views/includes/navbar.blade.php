@@ -44,18 +44,18 @@ session_start();
           </svg>              
         </button>
         <?php 
-        $cart = session('cart')
+        $cart = session('cart') ?? []
         ?>
         <div id="myCartDropdown1" class="hidden z-10 mx-auto max-w-sm space-y-4 overflow-hidden rounded-lg bg-white p-4 antialiased shadow-lg dark:bg-gray-800">
-          @foreach ($cart as $pizza)
+          @foreach ($cart as $cartitem)
             <div class="grid grid-cols-2">
               <div>
-                <a href="#" class="truncate text-sm font-semibold leading-none text-gray-900 dark:text-white hover:underline">Apple iPhone 15</a>
-                <p class="mt-0.5 truncate text-sm font-normal text-gray-500 dark:text-gray-400">$599</p>
+                <a href="#" class="truncate text-sm font-semibold leading-none text-gray-900 dark:text-white hover:underline">{{$cartitem['pizza']->name}}</a>
+                <p class="mt-0.5 truncate text-sm font-normal text-gray-500 dark:text-gray-400">${{$cartitem['pizza']->CalculatePrice()}}</p>
               </div>
         
               <div class="flex items-center justify-end gap-6">
-                <p class="text-sm font-normal leading-none text-gray-500 dark:text-gray-400">Qty: 1</p>
+                <p class="text-sm font-normal leading-none text-gray-500 dark:text-gray-400">Qty {{$cartitem['amount']}}</p>
         
                 <button data-tooltip-target="tooltipRemoveItem1a" type="button" class="text-red-600 hover:text-red-700 dark:text-red-500 dark:hover:text-red-600">
                   <span class="sr-only"> Remove </span>

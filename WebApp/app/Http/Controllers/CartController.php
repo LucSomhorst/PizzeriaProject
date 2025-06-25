@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Pizza;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -31,6 +31,7 @@ class CartController extends Controller
         $name = $request->input('name');
         $size = $request->input('size');
         $amount = $request->input('amount', 1);
+        $pizzaId = $request->input('id');
 
         // Unique key for the cart item
         $itemname = $name . '-' . $size;
@@ -44,7 +45,7 @@ class CartController extends Controller
         } else {
             // Add new item
             $cart[$itemname] = [
-                'name' => $name,
+                'pizza' => Pizza::find($pizzaId),
                 'size' => $size,
                 'amount' => $amount,
             ];
