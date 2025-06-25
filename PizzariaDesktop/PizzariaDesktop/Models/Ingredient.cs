@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace PizzariaDesktop.Models
 {
-    internal class Ingridient : ObservableObject
+    internal class Ingredient : ObservableObject
     {
         #region fields
         private string _name = string.Empty;
-        private int _price;
+        private double _price;
         private int _amount;
         private string _unit = string.Empty;
         #endregion
@@ -26,7 +26,7 @@ namespace PizzariaDesktop.Models
             get { return _name; }
             set { _name = value; OnPropertyChanged(); }
         }
-        public int Price
+        public double Price
         {
             get { return _price; }
             set { _price = value; OnPropertyChanged(); }

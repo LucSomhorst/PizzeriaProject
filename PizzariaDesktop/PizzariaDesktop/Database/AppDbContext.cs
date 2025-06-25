@@ -13,7 +13,7 @@ namespace PizzariaDesktop.Database
     internal class AppDbContext : DbContext
     {
         public DbSet<Customer> Customers { get; set; }
-        public DbSet<Ingridient> Ingridients { get; set; }
+        public DbSet<Ingredient> Ingredients { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderLine> OrderLines { get; set; }
         public DbSet<Pizza> Pizzas { get; set; }
