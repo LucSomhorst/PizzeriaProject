@@ -30,7 +30,8 @@ namespace PizzariaDesktop.Models
             get { return _status; } 
             set { _status = value; OnPropertyChanged(); }
         }
-        
+
+        public ICollection<OrderLine> OrderLines { get; set; }
         #endregion
     }
 }

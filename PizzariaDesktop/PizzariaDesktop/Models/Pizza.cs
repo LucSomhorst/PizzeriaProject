@@ -24,6 +24,8 @@ namespace PizzariaDesktop.Models
         }
 
         public ICollection<PizzaIngredient>? PizzaIngredients { get; set; }
+
+        public ICollection<OrderLine>? OrderLines { get; set; }
         #endregion
     }
 }

@@ -13,7 +13,12 @@ namespace PizzariaDesktop.Models
         #region fields
         private int _amount;
         private PizzaSize _size;
+        private int _pizzaId;
+        private Pizza _pizza = new();
+        private int _orderId;
+        private Order _order = new();
         #endregion
+
         #region properties
         [Key]
         public int Id { get; set; }
@@ -30,7 +35,29 @@ namespace PizzariaDesktop.Models
             set { _size = value; OnPropertyChanged(); }
         }
         
+        public int PizzaId
+        {
+            get { return _pizzaId; }
+            set { _pizzaId = value; OnPropertyChanged(); }
+        }
 
+        public Pizza Pizza
+        {
+            get { return _pizza; }
+            set { _pizza = value; OnPropertyChanged(); }
+        }
+
+        public int OrderId
+        {
+            get { return _orderId; }
+            set { _orderId = value; OnPropertyChanged(); }
+        }
+
+        public Order Order
+        {
+            get { return _order; }
+            set { _order = value; OnPropertyChanged(); }
+        }
         #endregion
     }
 }
