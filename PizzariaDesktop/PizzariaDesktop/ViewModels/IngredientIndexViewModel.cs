@@ -29,7 +29,7 @@ namespace PizzariaDesktop.ViewModels
             DeleteIngredientCommand = new RelayCommand(ExecuteDeleteingredient, CanExecuteDeleteingredient);
 
             using AppDbContext db = new();
-            ingredients = new(db.Ingredients.OrderBy(x => x.Name));
+            Ingredients = new(db.Ingredients.OrderBy(x => x.Name));
         }
 
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
@@ -41,7 +41,7 @@ namespace PizzariaDesktop.ViewModels
         #endregion
 
         #region properties
-        public ObservableCollection<Ingredient> ingredients { get; set; }
+        public ObservableCollection<Ingredient> Ingredients { get; set; }
         #endregion
 
         #region commands
@@ -85,7 +85,7 @@ namespace PizzariaDesktop.ViewModels
                     db.Ingredients.Remove(ingredientInDb);
                     db.SaveChanges();
                 }
-                ingredients.Remove(ingredient);
+                Ingredients.Remove(ingredient);
             }
         }
         #endregion
