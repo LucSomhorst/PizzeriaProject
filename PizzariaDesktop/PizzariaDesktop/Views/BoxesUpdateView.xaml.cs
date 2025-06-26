@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Eindopdracht.Views
+namespace PizzariaDesktop.Views
 {
     /// <summary>
     /// Interaction logic for BoxesUpdateView.xaml

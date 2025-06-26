@@ -23,7 +23,7 @@ namespace PizzariaDesktop.Models
             set { _name = value; OnPropertyChanged(); }
         }
 
-        public ICollection<Ingredient> Ingredients { get; set; }
+        public ICollection<PizzaIngredient>? PizzaIngredients { get; set; }
         #endregion
     }
 }

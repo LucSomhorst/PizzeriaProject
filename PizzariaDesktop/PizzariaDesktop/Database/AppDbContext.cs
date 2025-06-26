@@ -17,6 +17,7 @@ namespace PizzariaDesktop.Database
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderLine> OrderLines { get; set; }
         public DbSet<Pizza> Pizzas { get; set; }
+        public DbSet<PizzaIngredient> PizzaIngredients { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

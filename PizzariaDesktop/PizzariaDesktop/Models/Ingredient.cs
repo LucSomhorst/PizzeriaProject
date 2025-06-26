@@ -45,7 +45,7 @@ namespace PizzariaDesktop.Models
         }
 
 
-        public ICollection<Pizza> Pizzas { get; set; }
+        public ICollection<PizzaIngredient>? PizzaIngredients { get; set; }
         #endregion
     }
 }
