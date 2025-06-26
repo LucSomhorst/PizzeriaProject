@@ -14,6 +14,7 @@ namespace PizzariaDesktop.ViewModels
         #region fields
         private object _activeViewModel;
         #endregion
+
         #region properties
         public UserMessage UserMessage
         {
@@ -25,6 +26,7 @@ namespace PizzariaDesktop.ViewModels
             set { _activeViewModel = value; OnPropertyChanged(); }
         }
         #endregion
+
         #region constructors
 #pragma warning disable CS8618
         public MainViewModel()
@@ -36,13 +38,39 @@ namespace PizzariaDesktop.ViewModels
         {
             UserMessage = userMessage;
             _activeViewModel = new ContactInfoViewModel(userMessage);
+
+
+            ShowIngredientsIndexCommand = new RelayCommand(ExecuteShowIngredientsIndex);
+            ShowOrdersIndexCommand = new RelayCommand(ExecuteShowOrdersIndex);
+            ShowPizzasIndexCommand = new RelayCommand(ExecuteShowPizzasIndex);
             ShowContactInfoCommand = new RelayCommand(ExecuteShowContactInfo);
         }
         #endregion
+
         #region commands
+        public ICommand ShowIngredientsIndexCommand { get; }
+        public ICommand ShowOrdersIndexCommand { get; }
+        public ICommand ShowPizzasIndexCommand { get; }
         public ICommand ShowContactInfoCommand { get; }
         #endregion
+
         #region methods
+
+        private void ExecuteShowIngredientsIndex(object? obj)
+        {
+            ActiveViewModel = new IngredientIndexViewModel(this, UserMessage);
+        }
+
+        private void ExecuteShowOrdersIndex(object? obj)
+        {
+            ActiveViewModel = new OrderIndexViewModel(this, UserMessage);
+        }
+
+        private void ExecuteShowPizzasIndex(object? obj)
+        {
+            ActiveViewModel = new PizzaIndexViewModel(this, UserMessage);
+        }
+
         private void ExecuteShowContactInfo(object? obj)
         {
             ActiveViewModel = new ContactInfoViewModel();

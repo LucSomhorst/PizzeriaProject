@@ -19,23 +19,30 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <!--#endregion-->
+        
         <!-- #region row 0: menu  -->
         <Menu Grid.Row="0" Style="{StaticResource MaterialDesignMenu}">
             <Menu.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <VirtualizingStackPanel Orientation="Vertical"/>
+                    <VirtualizingStackPanel Orientation="Horizontal"/>
                 </ItemsPanelTemplate>
             </Menu.ItemsPanel>
 
-            <MenuItem Header="Contact" Command="{Binding ExecuteShowContactInfo}"
-              Style="{StaticResource MaterialDesignMenuItem}"/>
+            <MenuItem Header="Ingredienten" Command="{Binding ShowIngredientsIndexCommand}"
+                      Style="{StaticResource MaterialDesignMenuItem}"/>
+            <MenuItem Header="Pizza's" Command="{Binding ShowPizzasIndexCommand}"
+                      Style="{StaticResource MaterialDesignMenuItem}"/>
+            <MenuItem Header="Bestellingen" Command="{Binding ShowOrdersIndexCommand}"
+                      Style="{StaticResource MaterialDesignMenuItem}"/>
         </Menu>
         <!--#endregion-->
+        
         <!-- #region row 1: application View Active application function  -->
         <ContentControl Grid.Row="1" Content="{Binding ActiveViewModel}"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"/>
         <!--#endregion-->
+        
         <!-- #region row 2: Possible Messages to User  -->
         <TextBlock Grid.Row="2" Text="{Binding UserMessage.Text}" 
            HorizontalAlignment="Stretch"
