@@ -10,6 +10,7 @@ using System.Windows.Automation;
 
 namespace PizzariaDesktop.Models
 {
+    [Table("ingredients")]
     internal class Ingredient : ObservableObject
     {
         #region fields

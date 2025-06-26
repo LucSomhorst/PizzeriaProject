@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace PizzariaDesktop.Models
 {
+    [Table("orders")]
     class Order:ObservableObject
     {
         #region fields
