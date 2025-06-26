@@ -13,19 +13,22 @@ namespace PizzariaDesktop.Models
     class Order:ObservableObject
     {
         #region fields
-        private DateOnly _date;
+        private DateTime _date;
         private OrderStatus _status;
-
         #endregion
+
         #region properties
-        [Key]
+        [Key, Column("id")]
         public int Id { get; set; }
 
-        public DateOnly Date
+        [Column("date")]
+        public DateTime Date
         {
             get { return _date; }
             set { _date = value; OnPropertyChanged(); }
         }
+
+        [Column("status")]
         public OrderStatus Status 
         { 
             get { return _status; } 

@@ -16,9 +16,10 @@ namespace PizzariaDesktop.Models
         private string _name= string.Empty;
         #endregion
         #region properties
-        [Key]
+        [Key, Column("id")]
         public int Id { get; set; }
 
+        [Column("name")]
         public string Name 
         { 
             get { return _name; }

@@ -22,17 +22,17 @@
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                 <TextBox Text="{Binding Ingredient.Amount, UpdateSourceTrigger=PropertyChanged}"
                          Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                         materialDesign:HintAssist.Hint="Naam"/>
+                         materialDesign:HintAssist.Hint="aantal"/>
                 <TextBox Text="{Binding Ingredient.Unit, UpdateSourceTrigger=PropertyChanged}"
                          Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                         materialDesign:HintAssist.Hint="Naam"/>
+                         materialDesign:HintAssist.Hint="type"/>
                 <TextBox Text="{Binding Ingredient.Name, UpdateSourceTrigger=PropertyChanged}"
                          Style="{StaticResource MaterialDesignOutlinedTextBox}"
                          materialDesign:HintAssist.Hint="Naam"/>
             </StackPanel>
             <TextBox Text="{Binding Ingredient.Price, UpdateSourceTrigger=PropertyChanged}"
                      Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                     materialDesign:HintAssist.Hint="Naam"
+                     materialDesign:HintAssist.Hint="prijs"
                      Margin="0,0,0,10"/>
         </StackPanel>
 

@@ -22,6 +22,7 @@ namespace PizzariaDesktop.Models
         #endregion
 
         #region properties
+        [Column("pizza_id")]
         public int PizzaId
         {
             get { return _pizzaId; }
@@ -33,6 +34,7 @@ namespace PizzariaDesktop.Models
             set { _pizza = value; OnPropertyChanged(); }
         }
 
+        [Column("ingredient_id")]
         public int IngredientId
         {
             get { return _ingredientId; }

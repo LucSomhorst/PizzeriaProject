@@ -21,26 +21,31 @@ namespace PizzariaDesktop.Models
         #endregion
 
         #region properties
-        [Key]
+        [Key, Column("id")]
         public int Id { get; set; }
 
+        [Column("name")]
         public string Name
         {
             get { return _name; }
             set { _name = value; OnPropertyChanged(); }
         }
+
+        [Column("price")]
         public double Price
         {
             get { return _price; }
             set { _price = value; OnPropertyChanged(); }
         }
 
+        [Column("amount")]
         public int Amount
         {
             get { return _amount; }
             set { _amount = value; OnPropertyChanged(); }
         }
 
+        [Column("unit")]
         public string Unit
         {
             get { return _unit; }

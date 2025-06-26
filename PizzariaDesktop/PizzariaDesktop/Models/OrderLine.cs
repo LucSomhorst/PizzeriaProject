@@ -22,21 +22,24 @@ namespace PizzariaDesktop.Models
         #endregion
 
         #region properties
-        [Key]
+        [Key, Column("id")]
         public int Id { get; set; }
 
+        [Column("amount")]
         public int Amount
         {
             get { return _amount; }
             set { _amount = value; OnPropertyChanged(); }
         }
 
+        [Column("size")]
         public PizzaSize Size
         {
             get { return _size; }
             set { _size = value; OnPropertyChanged(); }
         }
-        
+
+        [Column("pizza_id")]
         public int PizzaId
         {
             get { return _pizzaId; }
@@ -49,6 +52,7 @@ namespace PizzariaDesktop.Models
             set { _pizza = value; OnPropertyChanged(); }
         }
 
+        [Column("order_id")]
         public int OrderId
         {
             get { return _orderId; }

@@ -13,7 +13,7 @@
     </d:UserControl.DataContext>
 
     <Grid Margin="16">
-        <DataGrid ItemsSource="{Binding ingredients}"
+        <DataGrid ItemsSource="{Binding Ingredients}"
               AutoGenerateColumns="False"
               CanUserAddRows="False"
               IsReadOnly="True"

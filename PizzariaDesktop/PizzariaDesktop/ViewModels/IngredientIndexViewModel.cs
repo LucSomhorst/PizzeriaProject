@@ -24,9 +24,9 @@ namespace PizzariaDesktop.ViewModels
             _appNavigation = appNavigation;
             _userMessage = userMessage;
 
-            CreateIngredientCommand = new RelayCommand(ExecuteCreateingredient);
-            UpdateIngredientCommand = new RelayCommand(ExecuteUpdateingredient, CanExecuteUpdateingredient);
-            DeleteIngredientCommand = new RelayCommand(ExecuteDeleteingredient, CanExecuteDeleteingredient);
+            CreateIngredientCommand = new RelayCommand(ExecuteCreateIngredient);
+            UpdateIngredientCommand = new RelayCommand(ExecuteUpdateIngredient, CanExecuteUpdateIngredient);
+            DeleteIngredientCommand = new RelayCommand(ExecuteDeleteIngredient, CanExecuteDeleteIngredient);
 
             using AppDbContext db = new();
             Ingredients = new(db.Ingredients.OrderBy(x => x.Name));
@@ -51,30 +51,30 @@ namespace PizzariaDesktop.ViewModels
         #endregion
 
         #region methods
-        private void ExecuteCreateingredient(object? obj)
+        private void ExecuteCreateIngredient(object? obj)
         {
-            //_appNavigation.ActiveViewModel = new ingredientCreateViewModel(_appNavigation, _userMessage);
+            _appNavigation.ActiveViewModel = new IngredientCreateViewModel(_appNavigation, _userMessage);
         }
 
-        private bool CanExecuteUpdateingredient(object? obj)
+        private bool CanExecuteUpdateIngredient(object? obj)
         {
             return obj is Ingredient;
         }
 
-        private void ExecuteUpdateingredient(object? obj)
+        private void ExecuteUpdateIngredient(object? obj)
         {
             if (obj is Ingredient ingredient)
             {
-                //_appNavigation.ActiveViewModel = new ingredientUpdateViewModel(_appNavigation, _userMessage, ingredient);
+                _appNavigation.ActiveViewModel = new IngredientUpdateViewModel(_appNavigation, _userMessage, ingredient);
             }
         }
 
-        private bool CanExecuteDeleteingredient(object? obj)
+        private bool CanExecuteDeleteIngredient(object? obj)
         {
             return obj is Ingredient;
         }
 
-        private void ExecuteDeleteingredient(object? obj)
+        private void ExecuteDeleteIngredient(object? obj)
         {
             if (obj is Ingredient ingredient)
             {
