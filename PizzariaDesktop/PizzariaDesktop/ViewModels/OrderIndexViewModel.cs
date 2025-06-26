@@ -29,7 +29,7 @@ namespace PizzariaDesktop.ViewModels
             DeleteOrderCommand = new RelayCommand(ExecuteDeleteOrder, CanExecuteDeleteOrder);
 
             using AppDbContext db = new();
-            Orders = new(db.Orders.OrderBy(x => x.Id).Include(x => x.OrderLines));
+            Orders = new(db.Orders.OrderBy(x => x.Id).Include(o => o.OrderLines).ThenInclude(ol => ol.Pizza));
         }
 
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.

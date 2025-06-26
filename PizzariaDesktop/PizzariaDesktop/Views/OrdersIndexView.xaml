@@ -20,6 +20,19 @@
                   Style="{StaticResource MaterialDesignDataGrid}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Datum" Binding="{Binding Date}" Width="Auto"/>
+                <DataGridTemplateColumn Header="Pizzas" Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ItemsControl ItemsSource="{Binding OrderLines}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Pizza.Name}" />
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="Auto"/>
                 <DataGridTemplateColumn Header="" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
