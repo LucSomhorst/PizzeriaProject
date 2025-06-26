@@ -20,7 +20,7 @@ namespace PizzariaDesktop.ViewModels
         #endregion
 
         #region constructors
-        public ingredientCreateViewModel(IAppNavigation appNavigation, UserMessage userMessage)
+        public IngredientCreateViewModel(IAppNavigation appNavigation, UserMessage userMessage)
         {
             _appNavigation = appNavigation;
             _userMessage = userMessage;
@@ -28,11 +28,11 @@ namespace PizzariaDesktop.ViewModels
             CancelCommand = new RelayCommand(ExecuteCancel);
             StoreCommand = new RelayCommand(ExecuteStore, CanExecuteStore);
 
-            ingredient = new();
+            Ingredient = new();
         }
 
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
-        public ingredientCreateViewModel()
+        public IngredientCreateViewModel()
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
         {
 

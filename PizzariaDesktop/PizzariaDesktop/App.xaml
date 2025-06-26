@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:PizzariaDesktop"
              xmlns:views="clr-namespace:PizzariaDesktop.Views"
-             xmlns:viewmodels="clr-namespace:PizzariaDesktop.ViewModels"
+             xmlns:viewModels="clr-namespace:PizzariaDesktop.ViewModels"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
     <Application.Resources>
         <ResourceDictionary>
@@ -13,9 +13,37 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign3.Defaults.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <DataTemplate DataType="{x:Type viewmodels:ContactInfoViewModel}">
+            <DataTemplate DataType="{x:Type viewModels:ContactInfoViewModel}">
                 <views:ContactInfoView/>
             </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModels:IngredientIndexViewModel}">
+                <views:IngredientsIndexView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModels:IngredientCreateViewModel}">
+                <views:IngredientsCreateView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModels:IngredientUpdateViewModel}">
+                <views:IngredientsUpdateView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModels:OrderIndexViewModel}">
+                <views:OrdersIndexView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModels:OrderUpdateViewModel}">
+                <views:OrdersUpdateView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModels:PizzaIndexViewModel}">
+                <views:PizzasIndexView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModels:PizzaCreateViewModel}">
+                <views:PizzasCreateView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModels:PizzaUpdateViewModel}">
+                <views:PizzasUpdateView/>
+            </DataTemplate>
         </ResourceDictionary>
+        
     </Application.Resources>
 </Application>

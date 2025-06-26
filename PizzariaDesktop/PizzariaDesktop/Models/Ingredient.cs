@@ -2,9 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Automation;
 
 namespace PizzariaDesktop.Models
 {
@@ -46,6 +48,10 @@ namespace PizzariaDesktop.Models
 
 
         public ICollection<PizzaIngredient>? PizzaIngredients { get; set; }
+
+        [NotMapped]
+        public string FullIngredientLine => $"{Amount} {Unit} {Name}";
+
         #endregion
     }
 }

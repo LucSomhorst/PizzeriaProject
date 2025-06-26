@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace PizzariaDesktop.Views
 {
     /// <summary>
-    /// Interaction logic for BoxesUpdateView.xaml
+    /// Interaction logic for PizzasCreateView.xaml
     /// </summary>
-    public partial class BoxesUpdateView : UserControl
+    public partial class PizzasCreateView : UserControl
     {
-        public BoxesUpdateView()
+        public PizzasCreateView()
         {
             InitializeComponent();
         }
