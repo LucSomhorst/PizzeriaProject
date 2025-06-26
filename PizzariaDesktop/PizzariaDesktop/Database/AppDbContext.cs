@@ -28,5 +28,24 @@ namespace PizzariaDesktop.Database
                 optionsBuilder.UseSqlite(connstr);
             }
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<PizzaIngredient>()
+                .HasKey(pi => new { pi.PizzaId, pi.IngredientId });
+
+            modelBuilder.Entity<PizzaIngredient>()
+                .HasOne(bi => bi.Pizza)
+                .WithMany(b => b.PizzaIngredients)
+                .HasForeignKey(bi => bi.PizzaId);
+
+            modelBuilder.Entity<PizzaIngredient>()
+                .HasOne(bi => bi.Ingredient)
+                .WithMany(i => i.PizzaIngredients)
+                .HasForeignKey(bi => bi.IngredientId);
+
+        }
     }
 }
