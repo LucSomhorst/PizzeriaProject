@@ -29,6 +29,7 @@ namespace PizzariaDesktop.ViewModels
             StoreCommand = new RelayCommand(ExecuteStore, CanExecuteStore);
 
             Order = order;
+            OrderStatuses = Enum.GetValues(typeof(OrderStatus)).Cast<OrderStatus>().ToArray();
         }
 
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
@@ -41,6 +42,8 @@ namespace PizzariaDesktop.ViewModels
 
         #region properties
         public Order Order { get; }
+        public OrderStatus[] OrderStatuses { get; }
+
         #endregion
 
         #region commands
