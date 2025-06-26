@@ -39,8 +39,8 @@
         
         <!-- #region row 1: application View Active application function  -->
         <ContentControl Grid.Row="1" Content="{Binding ActiveViewModel}"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"/>
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"/>
         <!--#endregion-->
         
         <!-- #region row 2: Possible Messages to User  -->
