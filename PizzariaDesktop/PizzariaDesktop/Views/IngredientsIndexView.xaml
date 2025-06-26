@@ -12,7 +12,42 @@
         <viewmodels:IngredientIndexViewModel/>
     </d:UserControl.DataContext>
 
-    <Grid>
-            
+    <Grid Margin="16">
+        <DataGrid ItemsSource="{Binding ingredients}"
+              AutoGenerateColumns="False"
+              CanUserAddRows="False"
+              IsReadOnly="True"
+              Style="{StaticResource MaterialDesignDataGrid}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Naam" Binding="{Binding FullIngredientLine}" Width="Auto"/>
+                <DataGridTextColumn Header="Prijs" Binding="{Binding Price}" Width="Auto"/>
+                <DataGridTemplateColumn Header="" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Command="{Binding DataContext.UpdateIngredientCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                    CommandParameter="{Binding}"
+                                    Style="{StaticResource MaterialDesignIconButton}">
+                                    <materialDesign:PackIcon Kind="Pencil" Foreground="Purple"/>
+                                </Button>
+                                <Button Command="{Binding DataContext.DeleteIngredientCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                    CommandParameter="{Binding}"
+                                    Style="{StaticResource MaterialDesignIconButton}">
+                                    <materialDesign:PackIcon Kind="Delete" Foreground="Red"/>
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Command="{Binding CreateIngredientCommand}"
+            Style="{StaticResource MaterialDesignFloatingActionButton}"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Right"
+            Margin="0,-8,20,0">
+            <materialDesign:PackIcon Kind="Plus" />
+        </Button>
     </Grid>
 </UserControl>

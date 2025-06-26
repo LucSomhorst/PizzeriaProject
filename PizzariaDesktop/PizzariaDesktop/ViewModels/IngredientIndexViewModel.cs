@@ -24,9 +24,9 @@ namespace PizzariaDesktop.ViewModels
             _appNavigation = appNavigation;
             _userMessage = userMessage;
 
-            CreateingredientCommand = new RelayCommand(ExecuteCreateingredient);
-            UpdateingredientCommand = new RelayCommand(ExecuteUpdateingredient, CanExecuteUpdateingredient);
-            DeleteingredientCommand = new RelayCommand(ExecuteDeleteingredient, CanExecuteDeleteingredient);
+            CreateIngredientCommand = new RelayCommand(ExecuteCreateingredient);
+            UpdateIngredientCommand = new RelayCommand(ExecuteUpdateingredient, CanExecuteUpdateingredient);
+            DeleteIngredientCommand = new RelayCommand(ExecuteDeleteingredient, CanExecuteDeleteingredient);
 
             using AppDbContext db = new();
             ingredients = new(db.Ingredients.OrderBy(x => x.Name));
@@ -45,9 +45,9 @@ namespace PizzariaDesktop.ViewModels
         #endregion
 
         #region commands
-        public ICommand CreateingredientCommand { get; }
-        public ICommand UpdateingredientCommand { get; }
-        public ICommand DeleteingredientCommand { get; }
+        public ICommand CreateIngredientCommand { get; }
+        public ICommand UpdateIngredientCommand { get; }
+        public ICommand DeleteIngredientCommand { get; }
         #endregion
 
         #region methods
