@@ -8,9 +8,10 @@
         <div class="space-y-6">
           <div class="rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 md:p-6">
             @foreach ($pizzas as $pizza)
-              <form method="POST" action="cart/store">
+              <form method="POST" action="carts">
                 @csrf
                 <input hidden id="id" name="id" value="{{$pizza->id}}"/>
+                <input hidden id="name" name="name" value="{{$pizza->name}}"/>
                 <input type="text" hidden="true" id="size" name="size" value="30"/>
                 <div class="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
                   <a id="pizzaModalButton" data-modal-target="pizzaModal" data-modal-toggle="pizzaModal" class="shrink-0 md:order-1">

@@ -31,12 +31,13 @@ class OrderLine extends Model
 
     public function CalculatePrice()
     {
-        $price = $this->Pizza()->price();
+        $price = $this->Pizza->CalculatePrice();
         switch ($this->size)
         {
             case 'small': $price *= 1; break;
             case 'medium' : $price *= 1.2; break;
             case 'large': $price *= 1.5; break;
         }
+        return $price;
     }
 }

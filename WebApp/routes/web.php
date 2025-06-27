@@ -18,8 +18,8 @@ Route::get('/checkout', function () {
 
 route::get('/menu', [ShopController::class, 'index'])->name('menu');
 route::post('/menu/add', [ShopController::class,'addItem']);
-route::post('/cart/store', [CartController::class, 'store']);
-route::get('/cart', [CartController::class, 'index']);
-Route::resources(
-    ['orders' => OrderController::class]
-);
+Route::resources(resources: [
+    'carts' => CartController::class,
+    'orders' => OrderController::class 
+    ]);
+

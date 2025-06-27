@@ -26,6 +26,11 @@ session_start();
               Menu
             </a>
           </li>
+          <li>
+            <a href="orders" title="" class="flex text-sm font-medium text-gray-900 hover:text-primary-700 dark:text-white dark:hover:text-primary-500">
+              Orders
+            </a>
+          </li>
         </ul>
       </div>
 
@@ -56,13 +61,17 @@ session_start();
         
               <div class="flex items-center justify-end gap-6">
                 <p class="text-sm font-normal leading-none text-gray-500 dark:text-gray-400">Qty {{$cartitem['amount']}}</p>
-        
-                <button data-tooltip-target="tooltipRemoveItem1a" type="button" class="text-red-600 hover:text-red-700 dark:text-red-500 dark:hover:text-red-600">
+                <form method="POST" action="carts/{{$cartitem['name']}}">
+                  @csrf
+                      @method('DELETE')
+                  <input name="name" value="{{$cartitem['name']}}" />
+                <button data-tooltip-target="tooltipRemoveItem1a" type="submit" class="text-red-600 hover:text-red-700 dark:text-red-500 dark:hover:text-red-600">
                   <span class="sr-only"> Remove </span>
                   <svg class="h-4 w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                     <path fill-rule="evenodd" d="M2 12a10 10 0 1 1 20 0 10 10 0 0 1-20 0Zm7.7-3.7a1 1 0 0 0-1.4 1.4l2.3 2.3-2.3 2.3a1 1 0 1 0 1.4 1.4l2.3-2.3 2.3 2.3a1 1 0 0 0 1.4-1.4L13.4 12l2.3-2.3a1 1 0 0 0-1.4-1.4L12 10.6 9.7 8.3Z" clip-rule="evenodd" />
                   </svg>
                 </button>
+                </form>
                 <div id="tooltipRemoveItem1a" role="tooltip" class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700">
                   Remove item
                   <div class="tooltip-arrow" data-popper-arrow></div>
@@ -70,7 +79,7 @@ session_start();
               </div>
             </div>
             @endforeach
-          <a href="cart" title="" class="mb-2 me-2 inline-flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" role="button"> Proceed to Checkout </a>
+          <a href="carts" title="" class="mb-2 me-2 inline-flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" role="button"> Proceed to Checkout </a>
         </div>
 
         {{-- <button id="userDropdownButton1" data-dropdown-toggle="userDropdown1" type="button" class="inline-flex items-center rounded-lg justify-center p-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-sm font-medium leading-none text-gray-900 dark:text-white">

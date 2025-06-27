@@ -14,7 +14,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-
+        return view('orderpage', ['orders' => Order::all()]);
     }
 
     /**
@@ -49,7 +49,7 @@ class OrderController extends Controller
             $order->orderLines()->save($orderline);
         }
 
-        return view('orderpage', ['order' => $order]);
+        return view('confirmationpage', ['order' => $order]);
     }
     /**
      * Display the specified resource.
@@ -85,6 +85,7 @@ class OrderController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Order::destroy($id);
+        return redirect()->back();
     }
 }

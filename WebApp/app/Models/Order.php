@@ -24,7 +24,7 @@ class Order extends Model
         $price = 0;
         foreach($this->OrderLines as $orderline)
         {
-            $price = $price + $orderline->price();
+            $price += $orderline->CalculatePrice();
         }
         return $price;
     }

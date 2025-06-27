@@ -48,6 +48,7 @@ class CartController extends Controller
                 'pizza' => Pizza::find($pizzaId),
                 'size' => $size,
                 'amount' => $amount,
+                'name' => $itemname
             ];
         }
 
@@ -59,7 +60,7 @@ class CartController extends Controller
         /**
      * Remove the specified resource from storage.
      */
-    public function remove(string $itemname)
+    public function destroy(string $itemname)
     {
         // Get existing cart from session
         $cart = session()->get('cart', []);
@@ -68,6 +69,8 @@ class CartController extends Controller
         if (isset($cart[$itemname])) {
             unset($cart[$itemname]);
         }
+        session(['cart' => $cart]);
+              return redirect()->back();
     }
 
     /**

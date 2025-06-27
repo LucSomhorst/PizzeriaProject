@@ -13,7 +13,7 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form method="POST" action="cart/store">
+            <form method="POST" action="carts">
                 <input hidden id="id" name="id" value="{{$pizza->id}}"/>
                 @csrf
                 <div class="grid gap-4 mb-4 sm:grid-cols-1">
